@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>Document</title></head>
+<body> <input type="text" id="search"></body>
+<script>   
+    var searchtimer;
+window.addEventListener("DOMContentLoaded", () => {
+  document.querySelector("#search").addEventListener("input", (e) => {
+    clearTimeout(searchtimer); // <--- The solution is here
+    searchtimer = setTimeout(() => {
+        let text = document.getElementById("search").value;
+    let utterance = new SpeechSynthesisUtterance(text);
+    window.speechSynthesis.speak(utterance);
+    }, 1000);
+  });
+}); 
+</script>
+</html>
